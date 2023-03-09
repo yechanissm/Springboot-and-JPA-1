@@ -10,12 +10,18 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class MemberApiController {
 
     private final MemberService memberService;
+
+    @GetMapping("/api/v1/members")
+    public List<Member> memberV1() {
+        return memberService.findMembers();
+    }
 
     @PostMapping("/api/v1/members")
     public CreateMemberResponse saveMemberV1(@RequestBody @Valid Member member){
@@ -39,6 +45,8 @@ public class MemberApiController {
         Member findMember = memberService.findOne(id);
         return new UpdateMemberResponse(findMember.getId(), findMember.getName());
     }
+
+
 
     @Data
     static class CreateMemberResponse {
