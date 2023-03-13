@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 /**
  * xToOne(M to O, O to O)
  * Order
@@ -43,7 +45,7 @@ public class OrderSimpleApiController {
 
         List<SimpleOrderDto> result = orders.stream()
                 .map(o -> new SimpleOrderDto(o))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         return result;
     }
@@ -54,7 +56,7 @@ public class OrderSimpleApiController {
 
         List<SimpleOrderDto> result = orders.stream()
                 .map(o -> new SimpleOrderDto(o))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         return result;
     }
